@@ -27,3 +27,8 @@ var room = 'zeuschamber';
 // room = prompt('Enter room name:');
 
 var socket = io.connect();
+
+if (room !== '') {
+  socket.emit('create or join', room);
+  console.log('Attempted to create or  join room', room);
+}
