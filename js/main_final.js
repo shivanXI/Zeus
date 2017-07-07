@@ -37,3 +37,7 @@ socket.on('created', function(room) {
   console.log('Created room ' + room);
   isInitiator = true;
 });
+
+socket.on('full', function(room) {
+  console.log('Room ' + room + ' is full');
+});
