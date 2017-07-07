@@ -172,3 +172,9 @@ function handleIceCandidate(event) {
     console.log('End of candidates.');
   }
 }
+
+function handleRemoteStreamAdded(event) {
+  console.log('Remote stream added.');
+  remoteVideo.src = window.URL.createObjectURL(event.stream);
+  remoteStream = event.stream;
+}
