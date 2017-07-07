@@ -20,5 +20,10 @@ io.sockets.on('connection', function(socket) {
 		socket.emit('log', array);
 	}
 
+	socket.on('message', function(message) {
+		log('Client said:', message);
+		socket.broadcast.emit('message', message);
+	});
+
 	
 })
