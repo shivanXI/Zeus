@@ -200,9 +200,7 @@ function onIceCandidate(pc, event) {
   }
 }
 
-function onAddIceCandidateSuccess(pc) {
-  trace(getName(pc) + ' addIceCandidate success');
-}
+
 
 function onAddIceCandidateError(pc, error) {
   trace(getName(pc) + ' failed to add ICE Candidate: ' + error.toString());
