@@ -27,3 +27,7 @@ socket.on('ipaddr', function(ipaddr) {
   console.log('Message from client: Server IP address is ' + ipaddr);
 });
 
+socket.on('log', function(array) {
+	console.log.apply(console, array);
+});
+
