@@ -19,3 +19,11 @@ var sdpConstraints = {
   offerToReceiveAudio: true,
   offerToReceiveVideo: true
 };
+
+////////////////////////////////////////////
+
+var room = 'zeuschamber';
+// Could prompt for room name:
+// room = prompt('Enter room name:');
+
+var socket = io.connect();
