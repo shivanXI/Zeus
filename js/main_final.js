@@ -13,3 +13,9 @@ var pcConfig = {
     'urls': 'stun:stun.l.google.com:19302'
   }]
 };
+
+// Set up audio and video regardless of what devices are present.
+var sdpConstraints = {
+  offerToReceiveAudio: true,
+  offerToReceiveVideo: true
+};
