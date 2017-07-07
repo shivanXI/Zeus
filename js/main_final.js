@@ -47,3 +47,8 @@ socket.on('join', function (room){
   console.log('This peer is the initiator of room ' + room + '!');
   isChannelReady = true;
 });
+
+socket.on('joined', function(room) {
+  console.log('joined: ' + room);
+  isChannelReady = true;
+});
