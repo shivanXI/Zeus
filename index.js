@@ -30,5 +30,21 @@ io.sockets.on('connection', function(socket) {
 		
 		var numClients  = io.sockets.sockets.length;
 		log('Room ' + room + ' now has ' + numClients + ' client(s)');
+		
+		if (numClients === 1) {
+			socket.join(room);
+			log('Client ID' + socket.id + 'joined room' + room);
+			socket.emit('created', room, socket.id);
+		} else if (numClients === 2){
+			log('Client ID ' + socket.id + 'joined room '+ room);
+			io.sockets.in(room).emit('join', room);
+			socket.join(room);
+			socket.emit('joined', room, socket.id);
+			io.sockets.in(room).emit('ready'); 
+		} else {
+			socket.emit('full', room);
+		}
 	});
+
+	
 })
