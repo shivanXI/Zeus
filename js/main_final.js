@@ -102,3 +102,13 @@ navigator.mediaDevices.getUserMedia({
 .catch(function(e) {
   alert('getUserMedia() error: ' + e.name);
 });
+
+function gotStream(stream) {
+  console.log('Adding local stream.');
+  localVideo.src = window.URL.createObjectURL(stream);
+  localStream = stream;
+  sendMessage('got user media');
+  if (isInitiator) {
+    maybeStart();
+  }
+}
