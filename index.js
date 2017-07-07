@@ -57,4 +57,7 @@ io.sockets.on('connection', function(socket) {
 		}
 	});
 
+	socket.on('bye', function(){
+		console.log('Received Byeeeeee');
+	});
 });
