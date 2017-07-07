@@ -156,4 +156,34 @@ function onReceiveMessageCallback(event) {
   dataChannelReceive.value = event.data;
 }
 
+function onSendChannelStateChange() {
+  var readyState = sendChannel.readyState;
+  trace('Send channel state is: ' + readyState);
+  if (readyState === 'open') {
+    dataChannelSend.disabled = false;
+    dataChannelSend.focus();
+    sendButton.disabled = false;
+    closeButton.disabled = false;
+  } else {
+    dataChannelSend.disabled = true;
+    sendButton.disabled = true;
+    closeButton.disabled = true;
+  }
+}
 
+function onReceiveChannelStateChange() {
+  var readyState = receiveChannel.readyState;
+  trace('Receive channel state is: ' + readyState);
+}
+
+function trace(text) {
+  if (text[text.length - 1] === '\n') {
+    text = text.substring(0, text.length - 1);
+  }
+  if (window.performance) {
+    var now = (window.performance.now() / 1000).toFixed(3);
+    console.log(now + ': ' + text);
+  } else {
+    console.log(text);
+  }
+}
