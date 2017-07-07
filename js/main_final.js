@@ -248,3 +248,9 @@ function hangup() {
   stop();
   sendMessage('bye! see you soon');
 }
+
+function handleRemoteHangup() {
+  console.log('Session terminated.');
+  stop();
+  isInitiator = false;
+}
