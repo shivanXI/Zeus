@@ -52,3 +52,7 @@ socket.on('joined', function(room) {
   console.log('joined: ' + room);
   isChannelReady = true;
 });
+
+socket.on('log', function(array) {
+  console.log.apply(console, array);
+});
