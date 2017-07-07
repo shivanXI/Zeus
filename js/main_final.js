@@ -89,3 +89,8 @@ socket.on('message', function(message) {
     handleRemoteHangup();
   }
 });
+
+///////////////////////////////////////////////////
+
+var localVideo = document.querySelector('#localVideo');
+var remoteVideo = document.querySelector('#remoteVideo');
