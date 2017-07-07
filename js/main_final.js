@@ -32,3 +32,8 @@ if (room !== '') {
   socket.emit('create or join', room);
   console.log('Attempted to create or  join room', room);
 }
+
+socket.on('created', function(room) {
+  console.log('Created room ' + room);
+  isInitiator = true;
+});
