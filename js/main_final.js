@@ -112,3 +112,7 @@ function gotStream(stream) {
     maybeStart();
   }
 }
+
+var constraints = {
+  video: true
+};
