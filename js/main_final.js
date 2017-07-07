@@ -138,3 +138,9 @@ function maybeStart() {
     }
   }
 }
+
+window.onbeforeunload = function() {
+  sendMessage('bye');
+};
+
+/////////////////////////////////////////////////////////
