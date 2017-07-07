@@ -242,3 +242,9 @@ function handleRemoteStreamAdded(event) {
 function handleRemoteStreamRemoved(event) {
   console.log('Remote stream removed. Event: ', event);
 }
+
+function hangup() {
+  console.log('Hanging up.');
+  stop();
+  sendMessage('bye! see you soon');
+}
