@@ -298,5 +298,9 @@ function preferOpus(sdp) {
   return sdp;
 }
 
+function extractSdp(sdpLine, pattern) {
+  var result = sdpLine.match(pattern);
+  return result && result.length === 2 ? result[1] : null;
+}
 
 
