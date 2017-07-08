@@ -13,7 +13,25 @@
 
   <h1>Zeus - Realtime communication with WebRTC</h1>
 
+  <!--Snap-Image transfer between peers-->
+  <div id="videoCanvas">
+    <video id="camera" autoplay></video>
+    <canvas id="photo"></canvas>
+  </div>
+
+  <div id="buttons">
+    <button id="snap">Snap</button><span> then </span><button id="send">Send</button>
+    <span> or </span>
+    <button id="snapAndSend">Snap &amp; Send</button>
+  </div>
+
+  <div id="incoming">
+    <h2>Incoming photos</h2>
+    <div id="trail"></div>
+  </div>
+
   <!--<video autoplay></video>-->
+  <!--Video-Chat: video streaming between peers -->
   <video id="localVideo" autoplay muted></video>
   <video id="remoteVideo" autoplay></video>
 
@@ -23,19 +41,18 @@
     <button id="hangupButton">Hang Up</button>
   </div>
 
+  <!--Text transfer between the peers-->
   <textarea id="dataChannelSend" disabled
     placeholder="Press Start, enter some text, then press Send."></textarea>
   <textarea id="dataChannelReceive" disabled></textarea>
-
   <div id="buttons">
     <button id="startButton">Start</button>
     <button id="sendButton">Send</button>
     <button id="closeButton">Stop</button>
   </div>
 
-  <script src="js/lib/adapter.js"></script>
-
   <script src="/socket.io/socket.io.js"></script>
+  <script src="js/lib/adapter.js"></script>
   <script src="js/main_final.js"></script>
   <!--<script src="js/main_text.js"></script>
   <script src="js/main_room.js"></script>-->
