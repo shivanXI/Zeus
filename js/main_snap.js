@@ -288,3 +288,15 @@ for (var i = 0; i < n; i++) {
   console.log(start + ' - ' + (end - 1));
   dataChannel.send(img.data.subarray(start, end));
 }
+
+// send the reminder, if any
+if (len % CHUNK_LEN) {
+  console.log('last ' + len % CHUNK_LEN + ' byte(s)');
+  dataChannel.send(img.data.subarray(n * CHUNK_LEN));
+}
+}
+
+function snapAndSend() {
+  snapPhoto();
+  sendPhoto();
+}
