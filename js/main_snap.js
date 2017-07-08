@@ -178,3 +178,47 @@ if (isInitiator) {
   };
 }
 }
+
+function onLocalSessionCreated(desc) {
+  console.log('local session created:', desc);
+  peerConn.setLocalDescription(desc, function() {
+    console.log('sending local desc:', peerConn.localDescription);
+    sendMessage(peerConn.localDescription);
+  }, logError);
+}
+
+function onDataChannelCreated(channel) {
+  console.log('onDataChannelCreated:', channel);
+
+  channel.onopen = function() {
+    console.log('CHANNEL opened!!!');
+  };
+
+  channel.onmessage = (adapter.browserDetails.browser === 'firefox') ?
+  receiveDataFirefoxFactory() : receiveDataChromeFactory();
+}
+
+function receiveDataChromeFactory() {
+  var buf, count;
+
+  return function onmessage(event) {
+    if (typeof event.data === 'string') {
+      buf = window.buf = new Uint8ClampedArray(parseInt(event.data));
+      count = 0;
+      console.log('Expecting a total of ' + buf.byteLength + ' bytes');
+      return;
+    }
+
+    var data = new Uint8ClampedArray(event.data);
+    buf.set(data, count);
+
+    count += data.byteLength;
+    console.log('count: ' + count);
+
+    if (count === buf.byteLength) {
+// we're done: all data chunks have been received
+console.log('Done. Rendering photo.');
+renderPhoto(buf);
+}
+};
+}
