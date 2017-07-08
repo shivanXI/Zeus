@@ -75,3 +75,11 @@ socket.emit('create or join', room);
 if (location.hostname.match(/localhost|127\.0\.0/)) {
   socket.emit('ipaddr');
 }
+
+/**
+* Send message to signaling server
+*/
+function sendMessage(message) {
+  console.log('Client sending message: ', message);
+  socket.emit('message', message);
+}
