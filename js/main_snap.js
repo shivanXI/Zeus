@@ -260,3 +260,12 @@ function receiveDataFirefoxFactory() {
     }
   };
 }
+
+/****************************************************************************
+* Aux functions, mostly UI-related
+****************************************************************************/
+
+function snapPhoto() {
+  photoContext.drawImage(video, 0, 0, photo.width, photo.height);
+  show(photo, sendBtn);
+}
