@@ -269,3 +269,22 @@ function snapPhoto() {
   photoContext.drawImage(video, 0, 0, photo.width, photo.height);
   show(photo, sendBtn);
 }
+
+function sendPhoto() {
+// Split data channel message in chunks of this byte length.
+var CHUNK_LEN = 64000;
+console.log('width and height ', photoContextW, photoContextH);
+var img = photoContext.getImageData(0, 0, photoContextW, photoContextH),
+len = img.data.byteLength,
+n = len / CHUNK_LEN | 0;
+
+console.log('Sending a total of ' + len + ' byte(s)');
+dataChannel.send(len);
+
+// split the photo and send in chunks of about 64KB
+for (var i = 0; i < n; i++) {
+  var start = i * CHUNK_LEN,
+  end = (i + 1) * CHUNK_LEN;
+  console.log(start + ' - ' + (end - 1));
+  dataChannel.send(img.data.subarray(start, end));
+}
