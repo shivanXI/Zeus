@@ -16,3 +16,10 @@ var photoContextH;
 snapBtn.addEventListener('click', snapPhoto);
 sendBtn.addEventListener('click', sendPhoto);
 snapAndSendBtn.addEventListener('click', snapAndSend);
+
+// Create a random room if not already present in the URL.
+var isInitiator;
+var room = window.location.hash.substring(1);
+if (!room) {
+  room = window.location.hash = randomToken();
+}
