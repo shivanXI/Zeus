@@ -314,3 +314,9 @@ function renderPhoto(data) {
   img.data.set(data);
   context.putImageData(img, 0, 0);
 }
+
+function show() {
+  Array.prototype.forEach.call(arguments, function(elem) {
+    elem.style.display = null;
+  });
+}
