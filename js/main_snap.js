@@ -112,3 +112,31 @@ function gotStream(stream) {
   };
   show(snapBtn);
 }
+
+/****************************************************************************
+* WebRTC peer connection and data channel
+****************************************************************************/
+
+var peerConn;
+var dataChannel;
+
+function signalingMessageCallback(message) {
+  if (message.type === 'offer') {
+    console.log('Got offer. Sending answer to peer.');
+    peerConn.setRemoteDescription(new RTCSessionDescription(message), function() {},
+                                  logError);
+    peerConn.createAnswer(onLocalSessionCreated, logError);
+
+  } else if (message.type === 'answer') {
+    console.log('Got answer.');
+    peerConn.setRemoteDescription(new RTCSessionDescription(message), function() {},
+                                  logError);
+
+  } else if (message.type === 'candidate') {
+    peerConn.addIceCandidate(new RTCIceCandidate({
+      candidate: message.candidate
+    }));
+
+  } else if (message === 'bye') {
+// TODO: cleanup RTC connection?
+}
