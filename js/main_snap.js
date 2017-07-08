@@ -68,3 +68,10 @@ socket.on('message', function(message) {
   console.log('Client received message:', message);
   signalingMessageCallback(message);
 });
+
+// Join a room
+socket.emit('create or join', room);
+
+if (location.hostname.match(/localhost|127\.0\.0/)) {
+  socket.emit('ipaddr');
+}
