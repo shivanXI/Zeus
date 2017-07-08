@@ -8,3 +8,11 @@ var trail = document.getElementById('trail');
 var snapBtn = document.getElementById('snap');
 var sendBtn = document.getElementById('send');
 var snapAndSendBtn = document.getElementById('snapAndSend');
+
+var photoContextW;
+var photoContextH;
+
+// Attach event handlers
+snapBtn.addEventListener('click', snapPhoto);
+sendBtn.addEventListener('click', sendPhoto);
+snapAndSendBtn.addEventListener('click', snapAndSend);
