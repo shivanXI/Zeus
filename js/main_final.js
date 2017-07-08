@@ -291,3 +291,12 @@ function preferOpus(sdp) {
       break;
     }
   }
+	// Remove CN in m line and sdp.
+  sdpLines = removeCN(sdpLines, mLineIndex);
+
+  sdp = sdpLines.join('\r\n');
+  return sdp;
+}
+
+
+
