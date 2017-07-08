@@ -303,4 +303,19 @@ function extractSdp(sdpLine, pattern) {
   return result && result.length === 2 ? result[1] : null;
 }
 
+// Set the selected codec to the first in m line.
+function setDefaultCodec(mLine, payload) {
+  var elements = mLine.split(' ');
+  var newLine = [];
+  var index = 0;
+  for (var i = 0; i < elements.length; i++) {
+    if (index === 3) { // Format of media starts from the fourth.
+      newLine[index++] = payload; // Put target payload to the first.
+    }
+    if (elements[i] !== payload) {
+      newLine[index++] = elements[i];
+    }
+  }
+  return newLine.join(' ');
+}
 
