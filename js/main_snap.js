@@ -23,3 +23,15 @@ var room = window.location.hash.substring(1);
 if (!room) {
   room = window.location.hash = randomToken();
 }
+
+/****************************************************************************
+* Signaling server
+****************************************************************************/
+
+// Connect to the signaling server
+var socket = io.connect();
+
+socket.on('ipaddr', function(ipaddr) {
+  console.log('Server IP address is: ' + ipaddr);
+  // updateRoomURL(ipaddr);
+});
