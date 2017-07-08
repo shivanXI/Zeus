@@ -83,3 +83,19 @@ function sendMessage(message) {
   console.log('Client sending message: ', message);
   socket.emit('message', message);
 }
+
+/****************************************************************************
+* User media (webcam)
+****************************************************************************/
+
+function grabWebCamVideo() {
+  console.log('Getting user media (video) ...');
+  navigator.mediaDevices.getUserMedia({
+    audio: false,
+    video: true
+  })
+  .then(gotStream)
+  .catch(function(e) {
+    alert('getUserMedia() error: ' + e.name);
+  });
+}
