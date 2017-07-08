@@ -11,3 +11,7 @@ video {
   -webkit-filter: hue-rotate(180deg) saturate(200%); /*svg filters*/
 }
 
+canvas {
+  max-width: 100%;
+  width: 320px;
+}
