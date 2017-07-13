@@ -13,7 +13,7 @@ hydraExpress.init(config, () => {})
 		});
 
 		let message = hydra.createUMFMessage({
-			to: 'hello:[get]/',
+			to: 'hello:/', //[get]
 			from: 'friend:/',
 			body: {}
 		});
