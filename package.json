@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "WebRTC Zeus",
   "dependencies": {
+    "express": "^4.15.3",
+    "fwsp-hydra-express": "^1.0.0",
     "node-static": "0.7.7",
     "socket.io": "1.2.0"
-  }}
+  }
+}
